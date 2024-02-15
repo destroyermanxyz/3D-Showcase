@@ -27,4 +27,15 @@ export default [
     //     type: 'gltfModel',
     //     path: 'models/Fox/glTF/Fox.gltf'
     // }
+
+    {
+        name: "floorPath",
+        type: "gltfModel",
+        path: "/models/floor_path.glb",
+    },
+    {
+        name: "envMap",
+        type: "hdri",
+        path: "env.hdr",
+    },
 ];

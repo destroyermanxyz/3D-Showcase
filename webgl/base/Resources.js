@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import sources from "../sources";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 
 export default class Resources extends EventTarget {
     constructor() {
@@ -27,6 +28,7 @@ export default class Resources extends EventTarget {
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(
             this.manager
         );
+        this.loaders.rgbeLoader = new RGBELoader(this.manager);
     }
 
     startLoading() {
@@ -42,6 +44,10 @@ export default class Resources extends EventTarget {
                 });
             } else if (source.type === "cubeTexture") {
                 this.loaders.cubeTextureLoader.load(source.path, (file) => {
+                    this.sourceLoaded(source, file);
+                });
+            } else if (source.type === "hdri") {
+                this.loaders.rgbeLoader.load(source.path, (file) => {
                     this.sourceLoaded(source, file);
                 });
             }
