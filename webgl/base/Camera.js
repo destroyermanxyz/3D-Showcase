@@ -16,9 +16,9 @@ export default class Camera {
             75,
             window.innerWidth / window.innerHeight,
             0.01,
-            1000
+            10000
         );
-        this.instance.position.set(0, 1, 2);
+        this.instance.position.set(0, 100, 10);
 
         this.vFov = THREE.MathUtils.degToRad(this.instance.fov);
         this.viewportHeight =
@@ -28,7 +28,7 @@ export default class Camera {
 
     setControls() {
         this.controls = new OrbitControls(this.instance, this.canvas);
-        // this.controls.enableDamping = true;
+        this.controls.enableDamping = true;
     }
 
     resize() {

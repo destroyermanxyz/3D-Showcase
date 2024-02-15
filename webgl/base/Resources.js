@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import sources from "../sources";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 export default class Resources extends EventTarget {
     constructor() {
@@ -24,6 +25,11 @@ export default class Resources extends EventTarget {
 
         this.loaders = {};
         this.loaders.gltfLoader = new GLTFLoader(this.manager);
+
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath("/draco/");
+        this.loaders.gltfLoader.setDRACOLoader(dracoLoader);
+
         this.loaders.textureLoader = new THREE.TextureLoader(this.manager);
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(
             this.manager

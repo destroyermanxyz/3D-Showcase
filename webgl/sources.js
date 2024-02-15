@@ -28,14 +28,19 @@ export default [
     //     path: 'models/Fox/glTF/Fox.gltf'
     // }
 
-    {
-        name: "floorPath",
-        type: "gltfModel",
-        path: "/models/floor_path.glb",
-    },
+    // {
+    //     name: "floorPath",
+    //     type: "gltfModel",
+    //     path: "/models/floor_path.glb",
+    // },
     {
         name: "envMap",
         type: "hdri",
         path: "env.hdr",
+    },
+    {
+        name: "floorPath2",
+        type: "gltfModel",
+        path: "/models/SCENE_BAKE.gltf",
     },
 ];

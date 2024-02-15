@@ -17,7 +17,7 @@ export default class World {
 
             this.environment = new Environment(e.detail.envMap);
 
-            this.floorPath = new FloorPath(e.detail.floorPath);
+            this.floorPath = new FloorPath(e.detail.floorPath2);
         });
     }
 
