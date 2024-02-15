@@ -16,9 +16,9 @@ export default class Camera {
             75,
             window.innerWidth / window.innerHeight,
             0.01,
-            10000
+            1000
         );
-        this.instance.position.set(0, 100, 10);
+        this.instance.position.set(0, 10, 10);
 
         this.vFov = THREE.MathUtils.degToRad(this.instance.fov);
         this.viewportHeight =

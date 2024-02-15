@@ -1,19 +1,22 @@
 import * as THREE from "three";
 export default class Environment {
-    constructor(hdri) {
+    constructor({ envMap, background }) {
         this.experience = window.experience;
         this.scene = this.experience.scene;
         this.requestAnimation = this.experience.requestAnimation;
 
-        this.hdri = hdri;
+        this.envMap = envMap;
+        this.background = background;
+
+        console.log(this.background);
 
         this.setInstance();
     }
 
     setInstance() {
-        this.hdri.mapping = THREE.EquirectangularReflectionMapping;
+        this.envMap.mapping = THREE.EquirectangularReflectionMapping;
 
-        this.scene.environment = this.hdri;
-        this.scene.background = this.hdri;
+        this.scene.environment = this.envMap;
+        this.scene.background = new THREE.Color("#0F0B1C");
     }
 }

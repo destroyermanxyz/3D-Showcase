@@ -39,8 +39,14 @@ export default [
         path: "env.hdr",
     },
     {
-        name: "floorPath2",
+        name: "floorPath",
         type: "gltfModel",
-        path: "/models/SCENE_BAKE.gltf",
+        path: "/models/floor/SCENE_BAKE.gltf",
     },
+    {
+        name: "walls",
+        type: "gltfModel",
+        path: "/models/walls/walls.gltf",
+    },
+    { name: "background", type: "texture", path: "/background.webp" },
 ];

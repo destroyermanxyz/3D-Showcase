@@ -1,6 +1,7 @@
 import Environment from "./Environment.js";
 import FloorPath from "./FloorPath";
 import Lights from "./Lights.js";
+import Walls from "./Walls.js";
 
 export default class World {
     constructor() {
@@ -15,9 +16,17 @@ export default class World {
         this.resources.addEventListener("resourcesLoaded", (e) => {
             console.log(e.detail); // take items from resources.js
 
-            this.environment = new Environment(e.detail.envMap);
+            // env & bg
+            this.environment = new Environment({
+                envMap: e.detail.envMap,
+                background: e.detail.background,
+            });
 
-            this.floorPath = new FloorPath(e.detail.floorPath2);
+            // floor
+            this.floorPath = new FloorPath({ gltf: e.detail.floorPath });
+
+            // walls
+            this.walls = new Walls({ gltf: e.detail.walls });
         });
     }
 
