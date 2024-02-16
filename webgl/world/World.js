@@ -1,7 +1,6 @@
 import Environment from "./Environment.js";
-import FloorPath from "./FloorPath";
+import Space from "./Space.js";
 import Lights from "./Lights.js";
-import Walls from "./Walls.js";
 
 export default class World {
     constructor() {
@@ -22,11 +21,8 @@ export default class World {
                 background: e.detail.background,
             });
 
-            // floor
-            this.floorPath = new FloorPath({ gltf: e.detail.floorPath });
-
-            // walls
-            this.walls = new Walls({ gltf: e.detail.walls });
+            // scene 1
+            this.space = new Space({ gltf: e.detail.space });
         });
     }
 

@@ -1,8 +1,6 @@
 import * as THREE from "three";
-import vertex from "../shaders/vertex.glsl?raw";
-import fragment from "../shaders/fragment.glsl?raw";
 
-export default class Plane {
+export default class Space {
     constructor({ gltf }) {
         this.experience = window.experience;
         this.scene = this.experience.scene;
@@ -13,12 +11,11 @@ export default class Plane {
         this.setInstance();
     }
     setInstance() {
-        this.gltf.scene.scale.set(0.01, 0.01, 0.01);
+        let scale = 0.012;
+        this.gltf.scene.scale.set(scale, scale, scale);
 
         this.scene.add(this.gltf.scene);
     }
 
-    update() {
-        this.instance.rotation.y += this.requestAnimation.deltaTime;
-    }
+    update() {}
 }

@@ -13,12 +13,12 @@ export default class Camera {
 
     setInstance() {
         this.instance = new THREE.PerspectiveCamera(
-            75,
+            39,
             window.innerWidth / window.innerHeight,
             0.01,
             1000
         );
-        this.instance.position.set(0, 10, 10);
+        this.instance.position.set(0, 0, 13);
 
         this.vFov = THREE.MathUtils.degToRad(this.instance.fov);
         this.viewportHeight =

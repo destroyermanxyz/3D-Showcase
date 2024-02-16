@@ -8,8 +8,6 @@ export default class Environment {
         this.envMap = envMap;
         this.background = background;
 
-        console.log(this.background);
-
         this.setInstance();
     }
 
@@ -17,6 +15,7 @@ export default class Environment {
         this.envMap.mapping = THREE.EquirectangularReflectionMapping;
 
         this.scene.environment = this.envMap;
+        this.scene.background = this.background;
         this.scene.background = new THREE.Color("#0F0B1C");
     }
 }

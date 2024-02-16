@@ -38,15 +38,10 @@ export default [
         type: "hdri",
         path: "env.hdr",
     },
-    {
-        name: "floorPath",
-        type: "gltfModel",
-        path: "/models/floor/SCENE_BAKE.gltf",
-    },
-    {
-        name: "walls",
-        type: "gltfModel",
-        path: "/models/walls/walls.gltf",
-    },
     { name: "background", type: "texture", path: "/background.webp" },
+    {
+        name: "space",
+        type: "gltfModel",
+        path: "/models/space/space.gltf",
+    },
 ];
