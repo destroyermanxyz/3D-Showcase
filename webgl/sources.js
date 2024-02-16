@@ -42,6 +42,6 @@ export default [
     {
         name: "space",
         type: "gltfModel",
-        path: "/models/space/space.gltf",
+        path: "/models/space/fullscene.gltf",
     },
 ];
