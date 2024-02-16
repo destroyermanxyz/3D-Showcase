@@ -10,8 +10,9 @@ export default class Space {
 
         this.setInstance();
     }
+
     setInstance() {
-        let scale = 0.012;
+        let scale = 0.01;
         this.gltf.scene.scale.set(scale, scale, scale);
 
         this.scene.add(this.gltf.scene);

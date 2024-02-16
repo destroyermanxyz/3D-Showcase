@@ -5,8 +5,6 @@ export default class Lights {
         this.experience = window.experience;
         this.scene = this.experience.scene;
 
-        console.log(this.scene);
-
         this.setInstance();
     }
 

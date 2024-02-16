@@ -10,8 +10,6 @@ export default class Debug {
         this.renderer = this.experience.renderer.instance;
         this.controls = this.experience.camera.controls;
 
-        console.log(this.controls);
-
         this.active = window.location.hash === "#debug";
 
         if (this.active) {
@@ -29,6 +27,7 @@ export default class Debug {
     }
 
     update() {
+        if (!this.active) return;
         this.unJoliTheatre.update();
     }
 }
