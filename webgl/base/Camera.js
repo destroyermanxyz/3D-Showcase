@@ -8,7 +8,7 @@ export default class Camera {
         this.canvas = this.experience.canvas;
 
         this.setInstance();
-        this.setControls();
+        // this.setControls();
     }
 
     setInstance() {
@@ -43,14 +43,16 @@ export default class Camera {
     }
 
     update() {
-        this.controls.update();
+        // this.controls.update();
 
         this.instance.position.x +=
-            (this.experience.world.pointer.x - this.instance.position.x) *
+            (this.experience.world.pointer.x * 0.2 - this.instance.position.x) *
             (this.experience.requestAnimation.deltaTime * 5);
 
         this.instance.position.y +=
-            (this.experience.world.pointer.y - this.instance.position.y) *
+            (this.experience.world.pointer.y * 0.2 -
+                this.instance.position.y -
+                0.4) *
             (this.experience.requestAnimation.deltaTime * 5);
     }
 }

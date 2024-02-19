@@ -1,9 +1,8 @@
 body {
-    height: 300vh;
-    overflow: scroll;
+    height: 600vh;
 }
 
-canvas {
+canvas#experience {
     position: fixed;
     inset: 0;
 }

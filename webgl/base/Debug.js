@@ -1,5 +1,7 @@
 import GUI from "lil-gui";
-import UnJoliTheatre from "../../UnJoliTheatre/main";
+// import studio from "@theatre/studio";
+import { getProject, types, val } from "@theatre/core";
+import projectState from "../../projectState.json"
 
 export default class Debug {
     constructor() {
@@ -12,22 +14,43 @@ export default class Debug {
 
         this.active = window.location.hash === "#debug";
 
+        this.smoothScroll = 0;
+
         if (this.active) {
             this.gui = new GUI();
 
-            this.unJoliTheatre = new UnJoliTheatre({
-                canvas: this.canvas,
-                renderer: this.renderer,
-                scene: this.scene,
-                camera: this.camera,
-                // orbit: this.controls, // if you use orbit control, add it here
-                production: false, // set to false to enable the ui
+            // studio.initialize();
+            const project = getProject("THREE.js x Theatre.js", { state: projectState});
+            this.sheet = project.sheet("Scene");
+
+            const camera = this.sheet.object("Camera", {
+                position: types.compound({
+                    z: types.number(this.camera.position.z, {
+                        nudgeMultiplier: 0.01,
+                    }),
+                }),
+            });
+
+            camera.onValuesChange(({ position }) => {
+                this.camera.position.z = position.z;
             });
         }
     }
 
     update() {
         if (!this.active) return;
-        this.unJoliTheatre.update();
+
+        const sequenceLength = val(this.sheet.sequence.pointer.length);
+
+        let scrollNormalized =
+            (document.documentElement.scrollTop + document.body.scrollTop) /
+            (document.documentElement.scrollHeight -
+                document.documentElement.clientHeight);
+
+        this.smoothScroll +=
+            (scrollNormalized - this.smoothScroll) *
+            (this.experience.requestAnimation.deltaTime * 5);
+
+        this.sheet.sequence.position = this.smoothScroll * sequenceLength;
     }
 }
