@@ -3,6 +3,7 @@ import Space from "./Space.js";
 import Lights from "./Lights.js";
 import Pointer from "./utils/Pointer.js";
 import Theatre from "./utils/Theatre.js";
+import PostProcessing from "./PostProcessing.js";
 
 export default class World {
     constructor() {
@@ -20,6 +21,7 @@ export default class World {
         /**
          * World
          */
+        this.postProcessing = new PostProcessing()
         this.lights = new Lights();
 
         // Wait for resources
@@ -42,6 +44,7 @@ export default class World {
     update() {
         // this.floorPath.update();
         this.theatre.update();
+        this.postProcessing.update()
     }
 
     destroy() {}

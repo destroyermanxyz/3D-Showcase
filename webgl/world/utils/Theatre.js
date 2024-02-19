@@ -1,4 +1,4 @@
-// import studio from "@theatre/studio";
+import studio from "@theatre/studio";
 import { getProject, types, val } from "@theatre/core";
 import projectState from "../../../projectState.json";
 
@@ -6,17 +6,18 @@ export default class Theatre {
     constructor() {
         this.experience = window.experience;
         this.camera = this.experience.camera.instance;
+        this.experience.theatre = this;
 
         this.setInstance();
         this.setSmoothScroll();
     }
 
     setInstance() {
-        // studio.initialize();
-        const project = getProject("THREE.js x Theatre.js", {
+        studio.initialize();
+        this.project = getProject("THREE.js x Theatre.js", {
             state: projectState,
         });
-        this.sheet = project.sheet("Scene");
+        this.sheet = this.project.sheet("Scene");
 
         const camera = this.sheet.object("Camera", {
             position: types.compound({
