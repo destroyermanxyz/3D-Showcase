@@ -21,6 +21,10 @@ export default class Experience {
         this.world = new World();
         this.debug = new Debug();
 
+        /**
+         *
+         */
+
         this.resize = this.resize.bind(this);
         window.addEventListener("resize", this.resize);
 

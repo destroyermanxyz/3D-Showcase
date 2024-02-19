@@ -1,6 +1,7 @@
 import Environment from "./Environment.js";
 import Space from "./Space.js";
 import Lights from "./Lights.js";
+import Pointer from "./utils/Pointer.js";
 
 export default class World {
     constructor() {
@@ -9,6 +10,14 @@ export default class World {
         this.resources = this.experience.resources;
         this.experience.world = this;
 
+        /**
+         * Utils
+         */
+        this.pointer = new Pointer();
+
+        /**
+         * World
+         */
         this.lights = new Lights();
 
         // Wait for resources

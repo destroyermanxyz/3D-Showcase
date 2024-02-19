@@ -44,5 +44,13 @@ export default class Camera {
 
     update() {
         this.controls.update();
+
+        this.instance.position.x +=
+            (this.experience.world.pointer.x - this.instance.position.x) *
+            (this.experience.requestAnimation.deltaTime * 5);
+
+        this.instance.position.y +=
+            (this.experience.world.pointer.y - this.instance.position.y) *
+            (this.experience.requestAnimation.deltaTime * 5);
     }
 }

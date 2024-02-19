@@ -1,4 +1,9 @@
+body {
+    height: 300vh;
+    overflow: scroll;
+}
+
 canvas {
-    position: absolute;
+    position: fixed;
     inset: 0;
 }
