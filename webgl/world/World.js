@@ -4,6 +4,7 @@ import Lights from "./Lights.js";
 import Pointer from "./utils/Pointer.js";
 import Theatre from "./utils/Theatre.js";
 import PostProcessing from "./PostProcessing.js";
+import SpaceTunnel from "./SpaceTunnel.js";
 
 export default class World {
     constructor() {
@@ -21,7 +22,7 @@ export default class World {
         /**
          * World
          */
-        this.postProcessing = new PostProcessing()
+        this.postProcessing = new PostProcessing();
         this.lights = new Lights();
 
         // Wait for resources
@@ -34,20 +35,26 @@ export default class World {
                 background: e.detail.background,
             });
 
-            // scene 1
+            // space scene
             this.space = new Space({ gltf: e.detail.space });
+
+            // space tunnel scene
+            this.spaceTunnel = new SpaceTunnel({ gltf: e.detail.spaceTunnel });
         });
     }
 
     resize() {
-         this.postProcessing.resize()
+        this.postProcessing.resize();
+
+        if (this.space) this.space.resize
     }
 
     update() {
         // this.floorPath.update();
         this.theatre.update();
-        this.postProcessing.update()
-        if (this.space)this.space.update()
+        this.postProcessing.update();
+        if (this.space) this.space.update();
+        if (this.spaceTunnel) this.spaceTunnel.update()
     }
 
     destroy() {}

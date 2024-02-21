@@ -4,8 +4,6 @@ export default class Renderer {
     constructor() {
         this.experience = window.experience;
         this.canvas = this.experience.canvas;
-        this.scene = this.experience.scene;
-        this.camera = this.experience.camera;
 
         this.setInstance();
     }

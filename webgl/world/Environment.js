@@ -2,7 +2,7 @@ import * as THREE from "three";
 export default class Environment {
     constructor({ envMap, background }) {
         this.experience = window.experience;
-        this.scene = this.experience.scene;
+        this.scenes = this.experience.scenes;
         this.requestAnimation = this.experience.requestAnimation;
 
         this.envMap = envMap;
@@ -14,8 +14,15 @@ export default class Environment {
     setInstance() {
         this.envMap.mapping = THREE.EquirectangularReflectionMapping;
 
-        this.scene.environment = this.envMap;
-        this.scene.background = this.background;
-        this.scene.background = new THREE.Color("#352763");
+        // space scene
+        this.scenes.space.environment = this.envMap;
+        // this.scenes.space.background = this.background;
+        this.scenes.space.background = new THREE.Color("#352763");
+
+
+        // space tunnel scene
+        this.scenes.spaceTunnel.environment = this.envMap;
+        // this.scenes.spaceTunnel.background = this.background;
+        this.scenes.spaceTunnel.background = new THREE.Color("#352763");
     }
 }

@@ -9,7 +9,7 @@ import * as THREE from "three";
 export default class PostProcessing {
     constructor() {
         this.experience = window.experience;
-        this.scene = this.experience.scene;
+        this.scenes = this.experience.scenes;
         this.renderer = this.experience.renderer;
         this.camera = this.experience.camera;
 
@@ -22,7 +22,7 @@ export default class PostProcessing {
         this.composer = new EffectComposer(this.renderer.instance, renderTarget);
 
 
-        const renderPass = new RenderPass(this.scene, this.camera.instance);
+        const renderPass = new RenderPass(this.scenes.space, this.camera.instance);
         this.composer.addPass(renderPass);
 
         this.bloomPass = new UnrealBloomPass(

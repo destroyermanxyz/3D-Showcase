@@ -44,4 +44,9 @@ export default [
         type: "gltfModel",
         path: "/models/space/space.gltf",
     },
+    {
+        name: "spaceTunnel",
+        type: "gltfModel",
+        path: "/models/spaceTunnel/spaceTunnel.gltf",
+    },
 ];

@@ -13,7 +13,15 @@ export default class Experience {
 
         this.canvas = canvas;
 
+        /**
+         * Scenes
+         */
+        this.scenes = {
+            space: new THREE.Scene(),
+            spaceTunnel: new THREE.Scene(),
+        };
         this.scene = new THREE.Scene();
+
         this.requestAnimation = new RequestAnimation();
         this.resources = new Resources();
         this.camera = new Camera();
