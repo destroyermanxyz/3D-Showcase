@@ -11,6 +11,7 @@ export default class Space {
         this.gltf = gltf;
 
         this.setInstance();
+        this.setAnimations()
         // this.setTheatre();
     }
 
@@ -18,16 +19,27 @@ export default class Space {
         let scale = 0.01;
         this.gltf.scene.scale.set(scale, scale, scale);
 
-        this.gltf.scene.traverse((child) => {
-            if (child.isMesh) {
-                console.log(child);
-            }
-        })
-
         this.scene.add(this.gltf.scene);
     }
+    
+    setAnimations() {
+        const mixer = new THREE.AnimationMixer(this.gltf.scene); // put the gltf.scene
+        const clips = this.gltf.animations; // only gltf there
+    
+        const clip = THREE.AnimationClip.findByName(clips, "animation_0");
+    
+        const action = mixer.clipAction(clip);
+    
+        action.play();
+    
+        this.updateAnimations = function (deltaTime) {
+          mixer.update(deltaTime);
+        };
+    }
 
-    update() {}
+    update() {
+        this.updateAnimations(this.experience.requestAnimation.deltaTime)
+    }
 
     setTheatre() {
         this.spaceSheet = this.theatre.project.sheet("Space");

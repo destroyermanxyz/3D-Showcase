@@ -47,6 +47,7 @@ export default class World {
         // this.floorPath.update();
         this.theatre.update();
         this.postProcessing.update()
+        if (this.space)this.space.update()
     }
 
     destroy() {}
