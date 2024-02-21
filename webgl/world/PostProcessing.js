@@ -40,7 +40,7 @@ export default class PostProcessing {
             0.6,
             0.8
         );
-        this.composer.addPass(this.bloomPass);
+        // this.composer.addPass(this.bloomPass);
 
         const dotScreenShader = new ShaderPass(DotScreenShader);
         this.composer.addPass(dotScreenShader);

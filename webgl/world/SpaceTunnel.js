@@ -10,8 +10,6 @@ export default class SpaceTunnel {
 
         this.spacePortal = this.world.space.spacePortal;
 
-        console.log(this.spacePortal);
-
         this.gltf = gltf;
 
         this.setInstance();

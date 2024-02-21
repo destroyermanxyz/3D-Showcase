@@ -35,7 +35,12 @@ export default class Space {
             fragmentShader: fragment,
             uniforms: {
                 tDiffuse: { value: null },
-                uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight)}
+                uResolution: {
+                    value: new THREE.Vector2(
+                        window.innerWidth,
+                        window.innerHeight
+                    ),
+                },
             },
         });
     }
@@ -56,7 +61,8 @@ export default class Space {
     }
 
     resize() {
-        this.spacePortal.material.uniforms.uResolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
+        this.spacePortal.material.uniforms.uResolution.value =
+            new THREE.Vector2(window.innerWidth, window.innerHeight);
     }
 
     update() {
