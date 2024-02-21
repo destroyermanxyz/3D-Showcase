@@ -16,6 +16,6 @@ export default class Environment {
 
         this.scene.environment = this.envMap;
         this.scene.background = this.background;
-        this.scene.background = new THREE.Color("#0F0B1C");
+        this.scene.background = new THREE.Color("#352763");
     }
 }

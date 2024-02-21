@@ -39,7 +39,9 @@ export default class World {
         });
     }
 
-    resize() {}
+    resize() {
+         this.postProcessing.resize()
+    }
 
     update() {
         // this.floorPath.update();

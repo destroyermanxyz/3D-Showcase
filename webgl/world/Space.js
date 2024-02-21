@@ -18,6 +18,12 @@ export default class Space {
         let scale = 0.01;
         this.gltf.scene.scale.set(scale, scale, scale);
 
+        this.gltf.scene.traverse((child) => {
+            if (child.isMesh) {
+                console.log(child);
+            }
+        })
+
         this.scene.add(this.gltf.scene);
     }
 
