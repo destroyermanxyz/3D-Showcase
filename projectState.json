@@ -118,7 +118,7 @@
                       0
                     ],
                     "type": "bezier",
-                    "value": -15.98999999999998
+                    "value": -46.660000000000025
                   }
                 ]
               }
@@ -135,6 +135,7 @@
   },
   "definitionVersion": "0.4.0",
   "revisionHistory": [
+    "Bko8yOOIOvp6s3KZ",
     "0Fa3qupgF5v8aTvs"
   ]
 }

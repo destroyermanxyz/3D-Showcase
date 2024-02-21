@@ -18,12 +18,21 @@ export default class PostProcessing {
     }
 
     setInstance() {
-        const renderTarget = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight, { samples: 8})
-        this.composer = new EffectComposer(this.renderer.instance, renderTarget);
+        const renderTarget = new THREE.WebGLRenderTarget(
+            window.innerWidth,
+            window.innerHeight,
+            { samples: 8 }
+        );
+        this.composer = new EffectComposer(
+            this.renderer.instance,
+            renderTarget
+        );
 
-
-        const renderPass = new RenderPass(this.scenes.space, this.camera.instance);
-        this.composer.addPass(renderPass);
+        this.renderPass = new RenderPass(
+            this.scenes.space,
+            this.camera.instance
+        );
+        this.composer.addPass(this.renderPass);
 
         this.bloomPass = new UnrealBloomPass(
             new THREE.Vector2(window.innerWidth, window.innerHeight),
@@ -46,6 +55,12 @@ export default class PostProcessing {
 
     update() {
         this.composer.render();
+
+        if (this.camera.instance.position.z < -16) {
+            this.renderPass.scene = this.scenes.spaceTunnel;
+        } else {
+            this.renderPass.scene = this.scenes.space;
+        }
     }
 
     setDebug() {
