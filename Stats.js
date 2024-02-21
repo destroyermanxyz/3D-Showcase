@@ -99,7 +99,7 @@ Stats.Panel = function (name, fg, bg) {
     var min = Infinity,
         max = 0,
         round = Math.round;
-    var PR = Math.ceil(window.devicePixelRatio || 1);
+    var PR = Math.ceil(1);
 
     var WIDTH = 100 * PR,
         HEIGHT = 53 * PR,
