@@ -23,7 +23,5 @@ export default class Renderer {
         this.instance.setSize(window.innerWidth, window.innerHeight);
     }
 
-    update() {
-        // this.instance.render(this.scene, this.camera.instance);
-    }
+    update() {}
 }

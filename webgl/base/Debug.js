@@ -14,8 +14,4 @@ export default class Debug {
             this.gui = new GUI();
         }
     }
-
-    update() {
-        if (!this.active) return;
-    }
 }

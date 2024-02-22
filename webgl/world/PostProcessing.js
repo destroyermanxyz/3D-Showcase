@@ -40,7 +40,7 @@ export default class PostProcessing {
             0.6,
             0.8
         );
-        // this.composer.addPass(this.bloomPass);
+        this.composer.addPass(this.bloomPass);
 
         const dotScreenShader = new ShaderPass(DotScreenShader);
         this.composer.addPass(dotScreenShader);
@@ -54,13 +54,21 @@ export default class PostProcessing {
     }
 
     update() {
-        this.composer.render();
-
         if (this.camera.instance.position.z < -16) {
-            this.renderPass.scene = this.scenes.spaceTunnel;
+            if (this.renderPass.scene !== this.scenes.spaceTunnel) {
+                this.renderPass.scene = this.scenes.spaceTunnel;
+
+                console.log("tunnel");
+            }
         } else {
-            this.renderPass.scene = this.scenes.space;
+            if (this.renderPass.scene !== this.scenes.space) {
+                this.renderPass.scene = this.scenes.space;
+
+                console.log("space");
+            }
         }
+
+        this.composer.render();
     }
 
     setDebug() {

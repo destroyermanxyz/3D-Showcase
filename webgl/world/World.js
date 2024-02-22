@@ -46,7 +46,8 @@ export default class World {
     resize() {
         this.postProcessing.resize();
 
-        if (this.space) this.space.resize
+        if (this.space) this.space.resize();
+        if (this.spaceTunnel) this.spaceTunnel.resize();
     }
 
     update() {
@@ -54,7 +55,7 @@ export default class World {
         this.theatre.update();
         this.postProcessing.update();
         if (this.space) this.space.update();
-        if (this.spaceTunnel) this.spaceTunnel.update()
+        if (this.spaceTunnel) this.spaceTunnel.update();
     }
 
     destroy() {}

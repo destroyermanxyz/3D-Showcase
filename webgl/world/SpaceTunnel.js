@@ -30,6 +30,10 @@ export default class SpaceTunnel {
         );
     }
 
+    resize() {
+        this.renderTarget.setSize(window.innerWidth, window.innerHeight);
+    }
+
     update() {
         this.renderer.setRenderTarget(this.renderTarget);
         this.renderer.render(this.scenes.spaceTunnel, this.camera);
