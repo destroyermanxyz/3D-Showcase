@@ -17,6 +17,7 @@ export default class Experience {
          * Scenes
          */
         this.scenes = {
+            landing: new THREE.Scene(),
             space: new THREE.Scene(),
             spaceTunnel: new THREE.Scene(),
         };

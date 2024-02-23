@@ -5,6 +5,7 @@ import Pointer from "./utils/Pointer.js";
 import Theatre from "./utils/Theatre.js";
 import PostProcessing from "./PostProcessing.js";
 import SpaceTunnel from "./SpaceTunnel.js";
+import Landing from "./Landing.js";
 
 export default class World {
     constructor() {
@@ -35,6 +36,9 @@ export default class World {
                 background: e.detail.background,
             });
 
+            // landing
+            this.landing = new Landing({ gltf: e.detail.landing });
+
             // space scene
             this.space = new Space({ gltf: e.detail.space });
 
@@ -54,6 +58,7 @@ export default class World {
         // this.floorPath.update();
         this.theatre.update();
         this.postProcessing.update();
+        if (this.landing) this.landing.update();
         if (this.space) this.space.update();
         if (this.spaceTunnel) this.spaceTunnel.update();
     }

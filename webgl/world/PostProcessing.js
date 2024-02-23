@@ -29,7 +29,7 @@ export default class PostProcessing {
         );
 
         this.renderPass = new RenderPass(
-            this.scenes.space,
+            this.scenes.landing,
             this.camera.instance
         );
         this.composer.addPass(this.renderPass);
@@ -54,30 +54,30 @@ export default class PostProcessing {
     }
 
     update() {
-        if (this.camera.instance.position.z < -16) {
-            if (this.renderPass.scene !== this.scenes.spaceTunnel) {
-                this.renderPass.scene = this.scenes.spaceTunnel;
+        // if (this.camera.instance.position.z < -16) {
+        //     if (this.renderPass.scene !== this.scenes.spaceTunnel) {
+        //         this.renderPass.scene = this.scenes.spaceTunnel;
 
-                console.log("tunnel");
-            }
-        } else {
-            if (this.renderPass.scene !== this.scenes.space) {
-                this.renderPass.scene = this.scenes.space;
+        //         console.log("tunnel");
+        //     }
+        // } else {
+        //     if (this.renderPass.scene !== this.scenes.space) {
+        //         this.renderPass.scene = this.scenes.space;
 
-                console.log("space");
-            }
-        }
+        //         console.log("space");
+        //     }
+        // }
 
         this.composer.render();
     }
 
     setDebug() {
-        // setTimeout(() => {
-        //     this.gui = this.experience.debug.gui;
-        //     console.log(this.bloomPass);
-        //     this.gui.add(this.bloomPass, "strength", 0, 1);
-        //     this.gui.add(this.bloomPass, "threshold", 0, 1);
-        //     this.gui.add(this.bloomPass, "radius", 0, 3);
-        // }, 500);
+        setTimeout(() => {
+            this.gui = this.experience.debug.gui;
+            console.log(this.bloomPass);
+            this.gui.add(this.bloomPass, "strength", 0, 1);
+            this.gui.add(this.bloomPass, "threshold", 0, 1);
+            this.gui.add(this.bloomPass, "radius", 0, 3);
+        }, 500);
     }
 }

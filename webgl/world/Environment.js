@@ -14,6 +14,11 @@ export default class Environment {
     setInstance() {
         this.envMap.mapping = THREE.EquirectangularReflectionMapping;
 
+        // landing scene
+        this.scenes.landing.environment = this.envMap;
+        // this.scenes.landing.background = this.background;
+        this.scenes.landing.background = new THREE.Color("black");
+
         // space scene
         this.scenes.space.environment = this.envMap;
         // this.scenes.space.background = this.background;
