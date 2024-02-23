@@ -14,7 +14,7 @@ export default class PostProcessing {
         this.camera = this.experience.camera;
 
         this.setInstance();
-        this.setDebug();
+        if (window.location.hash === "#debug") this.setDebug();
     }
 
     setInstance() {
@@ -42,8 +42,8 @@ export default class PostProcessing {
         );
         this.composer.addPass(this.bloomPass);
 
-        const dotScreenShader = new ShaderPass(DotScreenShader);
-        this.composer.addPass(dotScreenShader);
+        this.dotScreenShader = new ShaderPass(DotScreenShader);
+        this.composer.addPass(this.dotScreenShader);
 
         const outputPass = new OutputPass();
         this.composer.addPass(outputPass);
@@ -72,12 +72,21 @@ export default class PostProcessing {
     }
 
     setDebug() {
-        setTimeout(() => {
-            this.gui = this.experience.debug.gui;
-            console.log(this.bloomPass);
-            this.gui.add(this.bloomPass, "strength", 0, 1);
-            this.gui.add(this.bloomPass, "threshold", 0, 1);
-            this.gui.add(this.bloomPass, "radius", 0, 3);
-        }, 500);
+        this.gui = this.experience.debug.gui;
+
+        const postPro = this.gui.addFolder("PostProcessing");
+
+        const bloom = postPro.addFolder("Bloom");
+        bloom.add(this.bloomPass, "strength", 0, 1);
+        bloom.add(this.bloomPass, "radius", 0, 3);
+        bloom.add(this.bloomPass, "threshold", 0, 1);
+
+        const dot = postPro.addFolder("dot");
+        dot.add(
+            this.dotScreenShader.material.uniforms.uSize,
+            "value",
+            0,
+            0.1
+        ).name("size");
     }
 }

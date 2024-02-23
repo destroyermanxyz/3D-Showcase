@@ -7,6 +7,7 @@
 const DotScreenShader = {
     uniforms: {
         tDiffuse: { value: null },
+        uSize: { value: 0.015 },
     },
 
     vertexShader: /* glsl */ `
@@ -22,6 +23,7 @@ const DotScreenShader = {
 
     fragmentShader: /* glsl */ `
 		uniform sampler2D tDiffuse;
+		uniform float uSize;
 
 		varying vec2 vUv;
 
@@ -36,7 +38,7 @@ const DotScreenShader = {
 
 			vec2 uvRandom = vUv;
 
-			color.rgb += random(uvRandom) * 0.015;
+			color.rgb += random(uvRandom) * uSize;
 
 			gl_FragColor = color;
 		}`,

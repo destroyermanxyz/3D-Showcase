@@ -10,6 +10,7 @@ export default class Landing {
 
         this.setInstance();
         this.setAnimations();
+        if (window.location.hash === "#debug") this.setDebug();
     }
 
     setInstance() {
@@ -35,5 +36,28 @@ export default class Landing {
 
     update() {
         this.updateAnimations(this.requestAnimation.deltaTime);
+    }
+
+    setDebug() {
+        this.gui = this.experience.debug.gui;
+
+        const parameters = {
+            intensity: 1,
+        };
+
+        const updateMaterials = (value) => {
+            this.scenes.landing.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.envMapIntensity = value;
+                }
+            });
+        };
+
+        const envMap = this.gui.addFolder("envMap");
+
+        envMap
+            .add(parameters, "intensity", 0, 3)
+            .onChange((value) => updateMaterials(value))
+            .name("landing intensity");
     }
 }

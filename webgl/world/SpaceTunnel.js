@@ -15,6 +15,7 @@ export default class SpaceTunnel {
 
         this.setInstance();
         this.setRenderTarget();
+        if (window.location.hash === "#debug") this.setDebug();
     }
 
     setInstance() {
@@ -71,5 +72,30 @@ export default class SpaceTunnel {
          * Animations
          */
         this.animations();
+    }
+
+    setDebug() {
+        this.gui = this.experience.debug.gui;
+
+        const parameters = {
+            intensity: 1,
+        };
+
+        const updateMaterials = (value) => {
+            this.scenes.spaceTunnel.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.envMapIntensity = value;
+                }
+            });
+        };
+
+        const envMap = this.gui.folders.find(
+            (folder) => folder._title === "envMap"
+        );
+
+        envMap
+            .add(parameters, "intensity", 0, 3)
+            .onChange((value) => updateMaterials(value))
+            .name("spaceTunnel intensity");
     }
 }

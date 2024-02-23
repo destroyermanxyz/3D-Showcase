@@ -23,12 +23,12 @@ export default class Experience {
         };
         this.scene = new THREE.Scene();
 
+        this.debug = new Debug();
         this.requestAnimation = new RequestAnimation();
         this.resources = new Resources();
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.world = new World();
-        this.debug = new Debug();
 
         /**
          *

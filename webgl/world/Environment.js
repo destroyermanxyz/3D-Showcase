@@ -9,6 +9,7 @@ export default class Environment {
         this.background = background;
 
         this.setInstance();
+        if (window.location.hash === "#debug") this.setDebug();
     }
 
     setInstance() {
@@ -29,4 +30,6 @@ export default class Environment {
         // this.scenes.spaceTunnel.background = this.background;
         this.scenes.spaceTunnel.background = new THREE.Color("black");
     }
+
+    setDebug() {}
 }
