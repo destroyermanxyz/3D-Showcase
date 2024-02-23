@@ -1,4 +1,4 @@
-// import studio from "@theatre/studio";
+import studio from "@theatre/studio";
 import { getProject, types, val } from "@theatre/core";
 import projectState from "../../../projectState.json";
 
@@ -13,7 +13,7 @@ export default class Theatre {
     }
 
     setInstance() {
-        // studio.initialize();
+        studio.initialize();
         this.project = getProject("THREE.js x Theatre.js", {
             state: projectState,
         });

@@ -19,10 +19,9 @@ export default class Environment {
         // this.scenes.space.background = this.background;
         this.scenes.space.background = new THREE.Color("#352763");
 
-
         // space tunnel scene
         this.scenes.spaceTunnel.environment = this.envMap;
         // this.scenes.spaceTunnel.background = this.background;
-        this.scenes.spaceTunnel.background = new THREE.Color("#352763");
+        this.scenes.spaceTunnel.background = new THREE.Color("black");
     }
 }
