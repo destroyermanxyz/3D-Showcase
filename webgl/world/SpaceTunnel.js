@@ -19,7 +19,7 @@ export default class SpaceTunnel {
     }
 
     setInstance() {
-        this.gltf.scene.position.z = -80;
+        this.gltf.scene.position.z = -50;
         this.gltf.scene.scale.set(0.01, 0.01, 0.01);
 
         this.gltf.scene.traverse((child) => {

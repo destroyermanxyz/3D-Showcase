@@ -21,14 +21,26 @@ export default class Theatre {
 
         const camera = this.sheet.object("Camera", {
             position: types.compound({
+                y: types.number(this.camera.position.y, {
+                    nudgeMultiplier: 0.01,
+                }),
                 z: types.number(this.camera.position.z, {
+                    nudgeMultiplier: 0.01,
+                }),
+            }),
+
+            rotation: types.compound({
+                x: types.number(0, {
                     nudgeMultiplier: 0.01,
                 }),
             }),
         });
 
-        camera.onValuesChange(({ position }) => {
+        camera.onValuesChange(({ position, rotation }) => {
+            this.camera.position.y = position.y;
             this.camera.position.z = position.z;
+
+            this.camera.rotation.x = rotation.x;
         });
     }
 

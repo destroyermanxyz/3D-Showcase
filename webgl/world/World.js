@@ -37,7 +37,9 @@ export default class World {
             });
 
             // landing
-            this.landing = new Landing({ gltf: e.detail.landing });
+            this.landing = new Landing({
+                gltf: [e.detail.landing1, e.detail.landing2],
+            });
 
             // space scene
             this.space = new Space({ gltf: e.detail.space });

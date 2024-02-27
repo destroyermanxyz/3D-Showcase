@@ -40,9 +40,14 @@ export default [
     },
     { name: "background", type: "texture", path: "/background.webp" },
     {
-        name: "landing",
+        name: "landing1",
         type: "gltfModel",
-        path: "/models/landing/landing.gltf",
+        path: "/models/landing/1/landing.gltf",
+    },
+    {
+        name: "landing2",
+        type: "gltfModel",
+        path: "/models/landing/2/landing2.gltf",
     },
     {
         name: "space",

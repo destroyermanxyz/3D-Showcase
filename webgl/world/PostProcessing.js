@@ -40,13 +40,13 @@ export default class PostProcessing {
             0.6,
             0.8
         );
-        this.composer.addPass(this.bloomPass);
+        // this.composer.addPass(this.bloomPass);
 
         this.dotScreenShader = new ShaderPass(DotScreenShader);
-        this.composer.addPass(this.dotScreenShader);
+        // this.composer.addPass(this.dotScreenShader);
 
         const outputPass = new OutputPass();
-        this.composer.addPass(outputPass);
+        // this.composer.addPass(outputPass);
     }
 
     resize() {
@@ -57,18 +57,15 @@ export default class PostProcessing {
         // if (this.camera.instance.position.z < -16) {
         //     if (this.renderPass.scene !== this.scenes.spaceTunnel) {
         //         this.renderPass.scene = this.scenes.spaceTunnel;
-
         //         console.log("tunnel");
         //     }
         // } else {
         //     if (this.renderPass.scene !== this.scenes.space) {
         //         this.renderPass.scene = this.scenes.space;
-
         //         console.log("space");
         //     }
         // }
-
-        this.composer.render();
+        // this.composer.render();
     }
 
     setDebug() {

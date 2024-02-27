@@ -4,6 +4,8 @@ export default class Renderer {
     constructor() {
         this.experience = window.experience;
         this.canvas = this.experience.canvas;
+        this.scenes = this.experience.scenes;
+        this.camera = this.experience.camera.instance;
 
         this.setInstance();
     }
@@ -23,5 +25,7 @@ export default class Renderer {
         this.instance.setSize(window.innerWidth, window.innerHeight);
     }
 
-    update() {}
+    update() {
+        this.instance.render(this.scenes.landing, this.camera);
+    }
 }
