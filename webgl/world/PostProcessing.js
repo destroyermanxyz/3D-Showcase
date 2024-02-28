@@ -46,7 +46,7 @@ export default class PostProcessing {
         // this.composer.addPass(this.dotScreenShader);
 
         const outputPass = new OutputPass();
-        // this.composer.addPass(outputPass);
+        this.composer.addPass(outputPass);
     }
 
     resize() {
@@ -65,7 +65,7 @@ export default class PostProcessing {
         //         console.log("space");
         //     }
         // }
-        // this.composer.render();
+        this.composer.render();
     }
 
     setDebug() {

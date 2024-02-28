@@ -38,7 +38,7 @@ export default class World {
 
             // landing
             this.landing = new Landing({
-                gltf: [e.detail.landing1, e.detail.landing2],
+                gltf: e.detail.landing,
             });
 
             // space scene

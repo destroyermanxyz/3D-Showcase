@@ -26,6 +26,6 @@ export default class Renderer {
     }
 
     update() {
-        this.instance.render(this.scenes.landing, this.camera);
+        // this.instance.render(this.scenes.space, this.camera);
     }
 }

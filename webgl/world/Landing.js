@@ -9,8 +9,7 @@ export default class Landing {
         this.theatre = this.experience.theatre;
         this.sheet = this.theatre.sheet;
 
-        this.gltf1 = gltf[0];
-        this.gltf2 = gltf[1];
+        this.gltf = gltf;
 
         this.setInstance();
         this.setAnimations();
@@ -18,45 +17,36 @@ export default class Landing {
     }
 
     setInstance() {
-        this.gltf1.scene.scale.set(0.01, 0.01, 0.01);
-        this.gltf2.scene.scale.set(0.01, 0.01, 0.01);
+        this.gltf.scene.scale.set(0.01, 0.01, 0.01);
 
-        this.gltf2.scene.position.y = -76.2;
-        this.gltf2.scene.position.z = -36.2;
-
-        this.gltf2.scene.traverse((child) => {
-            if (child.isMesh && child.name === "ARTEFACT") {
-                console.log(child.name);
-                child.visible = false;
-            }
-        });
-
-        let diamond, diamondSheet;
-
-        this.gltf1.scene.traverse((child) => {
-            if (child.isMesh && child.name === "PORTAIL") {
-                diamond = child;
-                diamondSheet = this.sheet.object("Landing Diamond", {
+        this.gltf.scene.traverse((child) => {
+            if (child.isMesh && child.name === "PORTAIL1") {
+                const diamondSheet = this.sheet.object("Landing Diamond", {
                     position: types.compound({
                         y: types.number(child.position.y, {
                             nudgeMultiplier: 10,
                         }),
                     }),
                 });
+
+                diamondSheet.onValuesChange(({ position }) => {
+                    child.position.y = position.y;
+                });
+            }
+
+            if (child.isMesh && child.name === "MUR") {
+                child.material = new THREE.MeshBasicMaterial({
+                    color: "#201d20",
+                });
             }
         });
 
-        diamondSheet.onValuesChange(({ position }) => {
-            diamond.position.y = position.y;
-        });
-
-        this.scenes.landing.add(this.gltf1.scene);
-        this.scenes.landing.add(this.gltf2.scene);
+        this.scenes.landing.add(this.gltf.scene);
     }
 
     setAnimations() {
-        const mixer = new THREE.AnimationMixer(this.gltf1.scene); // put the gltf.scene
-        const clips = this.gltf1.animations; // only gltf there
+        const mixer = new THREE.AnimationMixer(this.gltf.scene); // put the gltf.scene
+        const clips = this.gltf.animations; // only gltf there
 
         const clip = THREE.AnimationClip.findByName(clips, "animation_0");
 
@@ -95,7 +85,7 @@ export default class Landing {
             .onChange((value) => updateMaterials(value))
             .name("landing intensity");
 
-        this.gui.add(this.gltf2.scene.position, "y", -100, 0);
-        this.gui.add(this.gltf2.scene.position, "z", -100, 0);
+        // this.gui.add(this.gltf2.scene.position, "y", -100, 0);
+        // this.gui.add(this.gltf2.scene.position, "z", -100, 0);
     }
 }
